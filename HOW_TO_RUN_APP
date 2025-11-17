@@ -1,0 +1,27 @@
+
+# Ref: https://medium.com/@cibofdevs/complete-guide-to-crud-using-mybatis-and-spring-boot-d6c165167cdd
+
+PRE-REQUISITES (ORACLE):
+
+CREATE TABLE ADWH.EMPLOYEE (
+    ID          NUMBER      PRIMARY KEY,
+    NAME        VARCHAR2(100)   NOT NULL,
+    DEPARTMENT  VARCHAR2(100)   NOT NULL
+);
+
+# Start the Spring Boot Application #
+
+A. From IntelliJ:
+    1. Open the project.
+    2. Open DemoApplication.java
+    3. Click the green ▶ Run button.
+
+B. from terminal:
+    1. mvn spring-boot:run
+
+C. If you built a jar:
+    1. mvn clean package
+    2. java -jar target/springboot-mybatis-oracle-demo-1.0.0.jar
+
+The app starts on:
+    http://localhost:8080

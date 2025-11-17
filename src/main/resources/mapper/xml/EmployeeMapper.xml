@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.EmployeeMapper">
+
+    <resultMap id="EmployeeResult" type="com.example.demo.entity.Employee">
+        <id property="id" column="ID"/>
+        <result property="name" column="NAME"/>
+        <result property="department" column="DEPARTMENT"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="EmployeeResult">
+        SELECT * FROM ADWH.EMPLOYEE
+    </select>
+
+    <select id="findById" resultMap="EmployeeResult">
+        SELECT * FROM ADWH.EMPLOYEE WHERE ID = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO ADWH.EMPLOYEE (ID, NAME, DEPARTMENT)
+        VALUES (#{id}, #{name}, #{department})
+    </insert>
+
+    <update id="update">
+        UPDATE ADWH.EMPLOYEE
+        SET NAME=#{name}, DEPARTMENT=#{department}
+        WHERE ID=#{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM ADWH.EMPLOYEE WHERE ID=#{id}
+    </delete>
+
+    <delete id="truncate">
+        TRUNCATE TABLE ADWH.EMPLOYEE
+    </delete>
+
+</mapper>

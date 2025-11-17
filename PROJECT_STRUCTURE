@@ -1,0 +1,28 @@
+springboot-mybatis-oracle-demo
+│
+├── pom.xml
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.example.demo
+│       │       ├── DemoApplication.java
+│       │       ├── config
+│       │       │   └── MyBatisConfig.java
+│       │       ├── controller
+│       │       │   └── EmployeeController.java
+│       │       ├── entity
+│       │       │   └── Employee.java
+│       │       ├── mapper
+│       │       │   ├── EmployeeMapper.java
+│       │       │   └── xml
+│       │       │       └── EmployeeMapper.xml
+│       │       └── service
+│       │           ├── EmployeeService.java
+│       │           └── impl
+│       │               └── EmployeeServiceImpl.java
+│       └── resources
+│               ├── mapper
+│               │   └── xml
+│               │       └── EmployeeMapper.xml
+│               ├── application.properties
+│               └── mybatis-config.xml
