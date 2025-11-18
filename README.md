@@ -2,6 +2,8 @@
 
 This is a working solution of Spring Boot MyBatis 3 using Oracle Database
 
+#### TO RUN THE CODE, DO NOT FORGET TO CHANGE THE MAIN CLASS IN THE MAIN APPLICATION
+
 ##### To use this repository
 
 1. Clone the repository
