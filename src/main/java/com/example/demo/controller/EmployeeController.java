@@ -48,4 +48,9 @@ public class EmployeeController {
         employeeService.truncate();
         return "Truncated";
     }
+
+    @GetMapping("/search")
+    public List<Employee> getByName(@RequestParam String name) {
+        return employeeService.findByName(name);
+    }
 }

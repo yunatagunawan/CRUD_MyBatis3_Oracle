@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.Employee;
 import com.example.demo.mapper.EmployeeMapper;
 import com.example.demo.service.EmployeeService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -23,6 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findById(Long id) {
         return mapper.findById(id);
+    }
+
+    @Override
+    public List<Employee> findByName(String name) {
+        return mapper.findByName(name);
     }
 
     @Override

@@ -3,11 +3,38 @@
 
 PRE-REQUISITES (ORACLE):
 
+-- Basic CRUD
+-- Non identity column
 CREATE TABLE ADWH.EMPLOYEE (
     ID          NUMBER      PRIMARY KEY,
     NAME        VARCHAR2(100)   NOT NULL,
     DEPARTMENT  VARCHAR2(100)   NOT NULL
 );
+
+-- Identity column
+CREATE TABLE ADWH.EMPLOYEE (
+    ID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    NAME        VARCHAR2(100)   NOT NULL,
+    DEPARTMENT  VARCHAR2(100)   NOT NULL
+);
+
+-- Helper
+INSERT INTO ADWH.EMPLOYEE (NAME, DEPARTMENT) VALUES ('John Doe', 'Data Management');
+SELECT * FROM ADWH.EMPLOYEE;
+UPDATE ADWH.EMPLOYEE SET DEPARTMENT = 'LOREM' WHERE ID = 1;
+TRUNCATE TABLE ADWH.EMPLOYEE;
+
+-- Transaction
+DROP TABLE ADWH.BOOKINGS;
+CREATE TABLE ADWH.BOOKINGS (
+	ID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	FIRST_NAME VARCHAR2(5) NOT NULL
+);
+
+TRUNCATE TABLE ADWH.BOOKINGS;
+SELECT * FROM ADWH.BOOKINGS;
+
+
 
 # Start the Spring Boot Application #
 
@@ -18,10 +45,16 @@ A. From IntelliJ:
 
 B. from terminal:
     1. mvn spring-boot:run
+    2. mvn spring-boot:run -Dspring.profiles.active=prod
+    (working with environment)
+    3. mvn spring-boot:run -Dspring.profiles.active=prod -Dspring-boot.run.profiles=prod
+    3. mvn spring-boot:run -Dspring.profiles.active=dev -Dspring-boot.run.profiles=dev
 
 C. If you built a jar:
     1. mvn clean package
     2. java -jar target/springboot-mybatis-oracle-demo-1.0.0.jar
+    3. mvn spring-boot:run -Dspring.profiles.active=prod
+    4. java -jar target/springboot-mybatis-oracle-demo-1.0.0.jar --spring.profiles.active=prod
 
 The app starts on:
     http://localhost:8080

@@ -18,10 +18,17 @@
         SELECT * FROM ADWH.EMPLOYEE WHERE ID = #{id}
     </select>
 
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+        INSERT INTO ADWH.EMPLOYEE (NAME, DEPARTMENT)
+        VALUES (#{name}, #{department})
+    </insert>
+
+    <!-- This is for insert to table without identity column
     <insert id="insert">
         INSERT INTO ADWH.EMPLOYEE (ID, NAME, DEPARTMENT)
         VALUES (#{id}, #{name}, #{department})
     </insert>
+    -->
 
     <update id="update">
         UPDATE ADWH.EMPLOYEE
@@ -36,5 +43,24 @@
     <delete id="truncate">
         TRUNCATE TABLE ADWH.EMPLOYEE
     </delete>
+
+    <select id="findByName" resultMap="EmployeeResult">
+        SELECT * FROM ADWH.EMPLOYEE
+        <where>
+            <if test="name != null">
+                NAME = #{name}
+                <choose>
+                    <when test="name != 'John Doe'">
+                        AND DEPARTMENT = 'Infrastructure'
+                    </when>
+                    <otherwise>
+                        <!-- return empty if default 'John Doe' -->
+                        AND DEPARTMENT = 'Platform'
+                    </otherwise>
+                </choose>
+            </if>
+
+        </where>
+    </select>
 
 </mapper>

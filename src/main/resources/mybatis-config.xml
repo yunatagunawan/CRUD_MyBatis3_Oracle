@@ -6,5 +6,8 @@
 <configuration>
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="defaultExecutorType" value="BATCH"/>
     </settings>
 </configuration>
+

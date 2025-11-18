@@ -5,6 +5,12 @@ public class Employee {
     private String name;
     private String department;
 
+    public Employee() {
+        this.id = (long) -1;
+        this.name = null;
+        this.department = null;
+    }
+
     public Long getId() {
         return id;
     }
